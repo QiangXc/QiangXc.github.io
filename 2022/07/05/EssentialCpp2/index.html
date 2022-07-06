@@ -16,24 +16,24 @@
   <meta name="author" content="Hzqiang">
   <meta name="keywords" content="关键词">
   
-    <meta name="description" content="C++编程基础 对《Essential C++》的阅读总结 -- 第一章 对一些C++基础语法做回顾 1. 对象的定义与初始化 类（class），是用户自定义的数据类型。所以数据类型的定义和初始化可以看作一个对象的定义和初始化。 1234567891011#include&lt;string&gt;string user_name;int num;          &#x2F;&#x2F;对象的定义&#x2F;&#x2F;两">
+    <meta name="description" content="面向过程的编程风格 Procedural programming 对《Essential C++》的阅读总结 -- 第二章 只记录我想记录的 1. 调用函数 1.1 值传递和址传递 问题引出：使用冒泡算法对一个vector所含的数列进行排序，运行后发现原数列的顺序并没有改变。原因是传入冒泡算法函数以及冒泡算法里的swap()函数均采用值传递而非址传递的方法。 以此又引出了引用的概念 12">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【EssentialCpp】1 Basic 基础">
-<meta property="og:url" content="http://qiangxc.github.io/2022/07/04/EssentialCpp1/index.html">
+<meta property="og:title" content="【EssentialCpp】2 Procedural 面向过程编程">
+<meta property="og:url" content="http://qiangxc.github.io/2022/07/05/EssentialCpp2/index.html">
 <meta property="og:site_name" content="归宣居">
-<meta property="og:description" content="C++编程基础 对《Essential C++》的阅读总结 -- 第一章 对一些C++基础语法做回顾 1. 对象的定义与初始化 类（class），是用户自定义的数据类型。所以数据类型的定义和初始化可以看作一个对象的定义和初始化。 1234567891011#include&lt;string&gt;string user_name;int num;          &#x2F;&#x2F;对象的定义&#x2F;&#x2F;两">
+<meta property="og:description" content="面向过程的编程风格 Procedural programming 对《Essential C++》的阅读总结 -- 第二章 只记录我想记录的 1. 调用函数 1.1 值传递和址传递 问题引出：使用冒泡算法对一个vector所含的数列进行排序，运行后发现原数列的顺序并没有改变。原因是传入冒泡算法函数以及冒泡算法里的swap()函数均采用值传递而非址传递的方法。 以此又引出了引用的概念 12">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qiangxc.github.io/img/CPP.jpg">
-<meta property="article:published_time" content="2022-07-04T02:39:22.000Z">
-<meta property="article:modified_time" content="2022-07-05T03:54:12.935Z">
+<meta property="article:published_time" content="2022-07-05T13:09:47.000Z">
+<meta property="article:modified_time" content="2022-07-06T09:25:52.464Z">
 <meta property="article:author" content="Hzqiang">
-<meta property="article:tag" content="C++">
+<meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://qiangxc.github.io/img/CPP.jpg">
   
   
   
-  <title>【EssentialCpp】1 Basic 基础 - 归宣居</title>
+  <title>【EssentialCpp】2 Procedural 面向过程编程 - 归宣居</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【EssentialCpp】1 Basic 基础"></span>
+            <span id="subtitle" data-typed-text="【EssentialCpp】2 Procedural 面向过程编程"></span>
           
         </div>
 
@@ -211,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-04 10:39" pubdate>
-          2022年7月4日 上午
+        <time datetime="2022-07-05 21:09" pubdate>
+          2022年7月5日 晚上
         </time>
       </span>
     
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k 字
+          2.3k 字
         
       </span>
     
@@ -280,32 +280,44 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">【EssentialCpp】1 Basic 基础</h1>
+            <h1 style="display: none">【EssentialCpp】2 Procedural 面向过程编程</h1>
             
             <div class="markdown-body">
               
-              <h1 id="c编程基础">C++编程基础</h1>
-<p>对《Essential C++》的阅读总结 -- 第一章</p>
-<p>对一些C++基础语法做回顾</p>
-<h2 id="对象的定义与初始化">1. 对象的定义与初始化</h2>
-<p>类（class），是用户自定义的数据类型。所以数据类型的定义和初始化可以看作一个对象的定义和初始化。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;string&gt;</span></span><br>string user_name;<br><span class="hljs-type">int</span> num;          <span class="hljs-comment">//对象的定义</span><br><br><span class="hljs-comment">//两种初始化</span><br><span class="hljs-type">int</span> num = <span class="hljs-number">0</span>; <span class="hljs-comment">//运算符初始化</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">num</span><span class="hljs-params">(<span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">//构造函数语法</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;complex&gt;</span> <span class="hljs-comment">//复数类</span></span><br><span class="hljs-function">complex&lt;<span class="hljs-type">double</span>&gt; <span class="hljs-title">purei</span><span class="hljs-params">(<span class="hljs-number">0</span>,<span class="hljs-number">7</span>)</span></span>; <br><span class="hljs-comment">//构造语法可以给对象多个初值（实部，虚部），而运算符初始化不能</span><br></code></pre></td></tr></table></figure>
-<h2 id="条件语句与循环语句">2. 条件语句与循环语句</h2>
-<h3 id="条件语句">2.1 条件语句</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">if</span> (usr_guess == next elem)<br>    num_cor++;     <span class="hljs-comment">//在条件中执行第一句，即此句</span><br>    got_it = <span class="hljs-literal">true</span>; <span class="hljs-comment">//不在条件中执行此句</span><br><br><span class="hljs-comment">///////////////////////////////////////////</span><br><span class="hljs-keyword">if</span> (usr_guess == next elem)<br>&#123;<br>    num_cor++;  <br>    got_it = <span class="hljs-literal">true</span>; <br>&#125;                   <span class="hljs-comment">//执行多句则放在语句块中</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">switch</span>(num)<br>&#123;<br>    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>        <span class="hljs-comment">//num = 1时执行</span><br>        <span class="hljs-keyword">break</span>;<br><br>    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>;<br>        <span class="hljs-comment">//num = 2时执行</span><br>        <span class="hljs-keyword">break</span>;<br><br>    <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>;<br>        <span class="hljs-comment">//num = 3时执行</span><br>        <span class="hljs-keyword">break</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="循环语句">2.2 循环语句</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">while</span>( )<br>&#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="array-and-vector">3. Array and Vector</h2>
-<p>一般而言，建议使用<code>vector</code>甚于<code>array</code></p>
-<p>定义： 元素类型、名称和尺度大小</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//Array</span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> size = <span class="hljs-number">18</span>;<br><span class="hljs-type">int</span> pell_seq[ size ]; <span class="hljs-comment">//array大小必须为常量表达式</span><br><br><span class="hljs-comment">//Vector</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">pell_seq</span><span class="hljs-params">(size)</span></span>; <span class="hljs-comment">//vector大小可以不为常量表达式</span><br><br><span class="hljs-comment">//Array的初始化，编译器会算出此array包含了18个元素</span><br><span class="hljs-type">int</span> elem_seq[ ] =<br>&#123;<br>    <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">7</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<br>    <span class="hljs-number">3</span>,<span class="hljs-number">6</span>,<span class="hljs-number">10</span>,<span class="hljs-number">4</span>,<span class="hljs-number">9</span>,<span class="hljs-number">16</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">22</span><br>&#125;;<br><br><span class="hljs-comment">//vector不支持上述初始化列表，需用一个一个赋值，或者用已初始化的array作为其初值</span><br><br><span class="hljs-comment">//vector知道自己自己的大小</span><br>vector.<span class="hljs-built_in">size</span>() <span class="hljs-comment">//会返回包含元素的个数</span><br><br></code></pre></td></tr></table></figure>
-<h2 id="指针带来的弹性">4. 指针带来的弹性</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> ival = <span class="hljs-number">1024</span>;<br><br><span class="hljs-type">int</span> *pi = &amp;ival; <span class="hljs-comment">// pi是int类型对象的指针；pi的初值是ival所在的内存地址。</span><br><br><span class="hljs-comment">//提领（dereference）操作，取位于该指针所指地址上的对象</span><br><span class="hljs-keyword">if</span> (*pi != <span class="hljs-number">1024</span>) <span class="hljs-comment">//读ival的值</span><br>    *pi = <span class="hljs-number">1024</span>;  <span class="hljs-comment">//写值至ival</span><br></code></pre></td></tr></table></figure>
-<p><code>vector</code>的指针</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//六个vector对象：</span><br>vector&lt;<span class="hljs-type">int</span>&gt; A, B, C, D, E, F;<br><br><span class="hljs-comment">//指向vector&lt;int&gt;的指针pv，初始化为0（null）</span><br>vector&lt;<span class="hljs-type">int</span>&gt; *pv = <span class="hljs-number">0</span>;<br><br><span class="hljs-comment">//定义一个指针数组，每个指针都指向vector&lt;int&gt;</span><br>vector&lt;<span class="hljs-type">int</span>&gt; *seq_addrs[<span class="hljs-number">6</span>] =&#123;<br>    &amp;a, &amp;b, &amp;c, &amp;d, &amp;e, &amp;f<br>&#125;; <span class="hljs-comment">//seq_addrs是一个array，元素类型是vector&lt;int&gt;</span><br><br><span class="hljs-comment">//vector的句点（dot）选择操作，指针操作时要用arrow</span><br>a.<span class="hljs-built_in">empty</span>();<br>pv = seq_addrs[<span class="hljs-number">0</span>];<br>pv-&gt;<span class="hljs-built_in">empty</span>(); <span class="hljs-comment">//等价a.empty();</span><br><br><span class="hljs-comment">//vector的下标运算符，指针操作时要先提领pv</span><br>a[<span class="hljs-number">1</span>];<br>pv = seq_addrs[<span class="hljs-number">0</span>];<br>(*pv)[<span class="hljs-number">1</span>]; <span class="hljs-comment">//等价a[1]，下标运算符优先级较高，故要加括号。</span><br></code></pre></td></tr></table></figure>
-<h2 id="文件的读写">5. 文件的读写</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;fstream&gt;</span> <span class="hljs-comment">//对文件进行读写操作首先要包含fstream头文件</span></span><br><br><span class="hljs-comment">//定义一个ofstream（供输出用的file stream）对象，并传入文件名</span><br><span class="hljs-function">ofstream <span class="hljs-title">outfile</span><span class="hljs-params">(<span class="hljs-string">&quot;seq_data.txt&quot;</span>)</span></span>; <span class="hljs-comment">//没有该文件的话会自动创建</span><br><span class="hljs-function">ofstream <span class="hljs-title">outfile</span><span class="hljs-params">(<span class="hljs-string">&quot;seq_data.txt&quot;</span>,ios_base::app)</span></span>;<span class="hljs-comment">//追加模式，新数据会被加到文件末尾</span><br><br><span class="hljs-keyword">if</span>(! outfile) <span class="hljs-comment">//文件打开错误</span><br><br><span class="hljs-comment">//数据写入</span><br>outfile &lt;&lt; usr_name  &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span><br>        &lt;&lt; num_tries &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span><br>        &lt;&lt; num_right &lt;&lt; endl;<br><br><span class="hljs-comment">//////////////////////////////////////////////////////////////////</span><br><br><span class="hljs-comment">//定义ifstream对象，读</span><br><span class="hljs-function">ifstream <span class="hljs-title">infile</span><span class="hljs-params">(<span class="hljs-string">&quot;seq_data.txt&quot;</span>)</span></span>;<br>infile &gt;&gt; name;<br><br><span class="hljs-comment">//同时读写</span><br><span class="hljs-function">fstream <span class="hljs-title">iofile</span> <span class="hljs-params">(<span class="hljs-string">&quot;seq_data.txt&quot;</span>,ios_base::in|ios_base::app)</span><span class="hljs-comment">//以追加模式打开</span></span><br><span class="hljs-function"></span><br><span class="hljs-function">iofile.<span class="hljs-title">seekg</span><span class="hljs-params">(<span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">//开始读取前，将文件重新定位至起始处</span><br></code></pre></td></tr></table></figure>
+              <h1 id="面向过程的编程风格-procedural-programming">面向过程的编程风格 Procedural programming</h1>
+<p>对《Essential C++》的阅读总结 -- 第二章 只记录我想记录的</p>
+<h2 id="调用函数">1. 调用函数</h2>
+<h3 id="值传递和址传递">1.1 值传递和址传递</h3>
+<p>问题引出：使用冒泡算法对一个<code>vector</code>所含的数列进行排序，运行后发现原数列的顺序并没有改变。原因是传入冒泡算法函数以及冒泡算法里的<code>swap()</code>函数均采用值传递而非址传递的方法。 以此又引出了<code>引用</code>的概念</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//原swap()函数</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-type">int</span> val1, <span class="hljs-type">int</span> val2)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> temp = val1;<br>    val1 = val2;<br>    val2 = val1;<br>&#125;  <span class="hljs-comment">//值传递的方式导致传入的对象是原来对象的复制，对复制的对象进行交换操作并不会改变原来的对象</span><br><br><span class="hljs-comment">//采用传址（pass by reference）的方式</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-type">int</span> &amp; val1, <span class="hljs-type">int</span> &amp; val2)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> temp = val1;<br>    val1 = val2;<br>    val2 = val1;<br>&#125;<br><br><span class="hljs-type">int</span> &amp;rval = ival; <span class="hljs-comment">//reference(引用)，指向一个int对象</span><br>                  <span class="hljs-comment">//对rval的操作与对ival的操作无异</span><br></code></pre></td></tr></table></figure>
+<p>一般来说，除非你希望在函数内改变参数值，否则不建议在传递内置数据类型时，使用传址的方式。传址机制主要用于传递class object。</p>
+<h3 id="作用域范围">1.2 作用域、范围</h3>
+<p>除了<code>static</code>外，函数内定义的对象，只存在于函数执行期间。以传址的方式返回这些对象会造成错误。而以传值的方式则是返回对象的副本，它在函数之外依然存在。 &gt;调用函数时，内存中会建立“程序堆栈（<code>program stack</code>）”。这块特殊内存提供每个函数参数和函数定义对象的内存空间，称这些对象为<code>local object</code>。一旦函数完成，这块内存就会被释放，或者说从程序堆栈中被<code>pop</code>出来。</p>
+<p>函数内定义的对象 -- 局部范围（local extent），局部作用域（local scope）</p>
+<p>对象在函数以外声明 -- static extent（内存从main函数执行前就已经分配好，一直存在至程序结束），file scope。</p>
+<h3 id="动态内存管理">1.3 动态内存管理</h3>
+<blockquote>
+<p>local scope -- local extent</p>
+</blockquote>
+<blockquote>
+<p>file scope -- static extent 都由系统自动管理</p>
+</blockquote>
+<p>第三种存储期形式：dynamic extent（动态范围），其内存由程序的空闲空间，也称堆内存<code>heap memory</code>分配而来。这种内存通过程序员自行管理，<code>new</code>分配，<code>delete</code>释放。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//new语法</span><br><span class="hljs-keyword">new</span> <span class="hljs-built_in">Type</span>(initial_value);<br><br><span class="hljs-type">int</span> *pi;<br>pi = <span class="hljs-keyword">new</span> <span class="hljs-type">int</span>;<br><br>pi = <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>(<span class="hljs-number">1024</span>);<br><br><span class="hljs-comment">//分配数组</span><br><span class="hljs-type">int</span> *pia = <span class="hljs-keyword">new</span> <span class="hljs-type">int</span> [<span class="hljs-number">24</span>]; <span class="hljs-comment">//pia为数组第一个元素地址，数组每一个元素都未初始化，C++无分配同时定初值语法。</span><br><br><span class="hljs-keyword">delete</span> pi；<br><span class="hljs-keyword">delete</span> [] pia; <span class="hljs-comment">//删除数组所有元素</span><br><span class="hljs-comment">//不delete，则new的对象永远不会释放</span><br></code></pre></td></tr></table></figure>
+<p>局部静态对象，其在不同函数调用过程中，仍然持续存在于内存中</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">static</span> vector&lt;<span class="hljs-type">int</span>&gt; elems;<br></code></pre></td></tr></table></figure>
+<h2 id="声明inline函数">2. 声明inline函数</h2>
+<p>当一个函数里调用多个函数，造成性能不理想，能否将这多个函数合并为一个函数？使用<code>inline</code>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">bool</span> <span class="hljs-title">fibon_elem</span><span class="hljs-params">(xxx,xxx)</span></span><br></code></pre></td></tr></table></figure>
+<p>将函数声明为inline，表示要求编译器在每个函数调用点上，将函数的内容展开。（告诉编译器把调用的各个小函数编译后的机器码放到调用函数的地方，节省了调用的时间）</p>
+<p>一般而言，最适合声明为inline的函数，一般体积小、常被调用，所从事的计算并不复杂。</p>
+<p>inline函数的定义，常常被放在头文件中。（翻译单元只要用到某个inline函数，必须重复定义此inline函数。因此,inline函数的定义常常被放到头文件中。）</p>
+<h2 id="模板函数">3. 模板函数</h2>
+<p>推迟决定数据类型</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> elemType&gt;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">display_message</span><span class="hljs-params">(<span class="hljs-type">const</span> string &amp;msg, <span class="hljs-type">const</span> vector&lt;elemType&gt; &amp;vec)</span></span><br><span class="hljs-function"></span>&#123;<span class="hljs-comment">/*函数主体*/</span>&#125;<br><br><span class="hljs-comment">//function template再经重载（overload）</span><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> elemType&gt;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">display_message</span><span class="hljs-params">(<span class="hljs-type">const</span> string &amp;msg, <span class="hljs-type">const</span> vector&lt;elemType&gt; &amp;vec)</span></span><br><span class="hljs-function"></span><br><span class="hljs-function"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> elemType&gt;</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">display_message</span><span class="hljs-params">(<span class="hljs-type">const</span> string &amp;msg, <span class="hljs-type">const</span> list&lt;elemType&gt; &amp;vec)</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="函数指针">4. 函数指针</h2>
+<p>函数指针（pointer to function），指向函数的指针，需指明所指函数的返回类型以及参数列表</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//想要指向的函数，功能是产生Fibonacci数列</span><br><span class="hljs-function"><span class="hljs-type">const</span> vector&lt;<span class="hljs-type">int</span>&gt; *<span class="hljs-title">fibon_seq</span><span class="hljs-params">(<span class="hljs-type">int</span> size)</span></span><br><span class="hljs-function"></span><br><span class="hljs-function"><span class="hljs-comment">//定义函数指针</span></span><br><span class="hljs-function"><span class="hljs-type">const</span> vector&lt;<span class="hljs-type">int</span>&gt;* <span class="hljs-params">(*seq_ptr)</span><span class="hljs-params">(<span class="hljs-type">int</span>)</span></span>;<br><span class="hljs-comment">//const vector&lt;int&gt;* 为原函数的返回类型，返回一个指向vector&lt;int&gt;的指针</span><br><span class="hljs-comment">//eq_ptr为自定义的函数指针名称</span><br><span class="hljs-comment">//int为原函数的参数列表</span><br>seq_ptr = fibon_seq; <span class="hljs-comment">//函数名代表了函数地址</span><br></code></pre></td></tr></table></figure>
 
               
             </div>
@@ -317,7 +329,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/C/">#C++</a>
+        <a href="/tags/c/">#c++</a>
       
     </div>
   
@@ -329,8 +341,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【EssentialCpp】1 Basic 基础</div>
-      <div>http://qiangxc.github.io/2022/07/04/EssentialCpp1/</div>
+      <div>【EssentialCpp】2 Procedural 面向过程编程</div>
+      <div>http://qiangxc.github.io/2022/07/05/EssentialCpp2/</div>
     </div>
     <div class="license-meta">
       
@@ -342,7 +354,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年7月4日</div>
+          <div>2022年7月5日</div>
         </div>
       
       
@@ -372,18 +384,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/07/05/EssentialCpp2/" title="【EssentialCpp】2 Procedural 面向过程编程">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【EssentialCpp】2 Procedural 面向过程编程</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/06/08/Japenese1/" title="【自学日语】1.五十音（上）">
-                        <span class="hidden-mobile">【自学日语】1.五十音（上）</span>
+                      <a href="/2022/07/04/EssentialCpp1/" title="【EssentialCpp】1 Basic 基础">
+                        <span class="hidden-mobile">【EssentialCpp】1 Basic 基础</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
